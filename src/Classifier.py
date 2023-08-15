@@ -82,7 +82,7 @@ class Classifier:
         Returns:
             h2o.H2OFrame: The predicted classes or class probabilities.
         """
-        print(data)
+        print(data.columns)
         return model.predict(data)
 
     @classmethod
