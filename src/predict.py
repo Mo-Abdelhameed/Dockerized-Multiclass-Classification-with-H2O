@@ -35,7 +35,7 @@ def create_predictions_dataframe(
         new_targets = [s[1:] for s in new_targets]
 
     headers = new_targets + [schema.id]
-    predictions_df[schema.id] = ids
+    predictions_df = predictions_df.cbind(ids)
     predictions_df.columns = headers
     predictions_df = predictions_df[[schema.id] + new_targets]
     if actual_prediction:
@@ -71,6 +71,7 @@ def run_batch_predictions() -> None:
         data_schema,
         ids,
     )
+
 
     logger.info("Saving predictions...")
     save_dataframe_as_csv(
