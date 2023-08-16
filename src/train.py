@@ -41,7 +41,7 @@ def run_training(
         x_train = read_csv_in_directory(train_dir)
 
         for cat_columns in data_schema.categorical_features:
-            x_train[cat_columns.strip()] = x_train[cat_columns.strip()].asfactor()
+            x_train[cat_columns] = x_train[cat_columns].asfactor()
 
         classifier = Classifier(x_train, data_schema)
         classifier.train()

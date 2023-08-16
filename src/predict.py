@@ -59,7 +59,7 @@ def run_batch_predictions() -> None:
     data_schema = load_saved_schema(paths.SAVED_SCHEMA_DIR_PATH)
 
     for cat_columns in data_schema.categorical_features:
-        x_test[cat_columns.strip()] = x_test[cat_columns.strip()].asfactor()
+        x_test[cat_columns] = x_test[cat_columns].asfactor()
 
     model = Classifier.load(paths.PREDICTOR_DIR_PATH)
     logger.info("Making predictions...")
