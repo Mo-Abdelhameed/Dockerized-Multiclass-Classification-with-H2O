@@ -30,7 +30,7 @@ class Classifier:
         x.remove(schema.id)
         x.remove(schema.target)
         self.y = schema.target
-        self.aml = H2OAutoML(max_models=10, seed=10, nfolds=10, verbosity='info')
+        self.aml = H2OAutoML(max_models=8, seed=10, nfolds=10, verbosity='info')
         self.x = x
         self.training_df[schema.target] = self.training_df[schema.target].asfactor()
 
@@ -82,7 +82,6 @@ class Classifier:
         Returns:
             h2o.H2OFrame: The predicted classes or class probabilities.
         """
-        print(data.columns)
         return model.predict(data)
 
     @classmethod
